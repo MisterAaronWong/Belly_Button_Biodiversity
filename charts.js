@@ -3,7 +3,7 @@ function init() {
   var selector = d3.select("#selDataset");
 
   // Use the list of sample names to populate the select options
-  d3.json("static/js/samples.json").then((data) => {
+  d3.json("samples.json").then((data) => {
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
@@ -32,7 +32,7 @@ function optionChanged(newSample) {
 
 // Demographics Panel 
 function buildMetadata(sample) {
-  d3.json("static/js/samples.json").then((data) => {
+  d3.json("samples.json").then((data) => {
     var metadata = data.metadata;
     // Filter the data for the object with the desired sample number
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -60,17 +60,14 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     let samples = data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let filteredSamples = samples.filter(sampleObj => sampleObj.id == sample);
-    console.log(filteredSamples)
+    let filteredSamples = samples.filter(sampleObj => sampleObj.id === sample);
+    
     //  5. Create a variable that holds the first sample in the array.
     let firstSample = filteredSamples[0];
-    console.log(firstSample)
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     let otuIds = firstSample.otu_ids
-
     let otuLabels = firstSample.otu_labels;
-
     let sampleValues = firstSample.sample_values;
 
     // 7. Create the yticks for the bar chart.
@@ -104,31 +101,23 @@ function buildCharts(sample) {
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout)
-  });
-}
 
 // Bar and Bubble charts
-// Create the buildCharts function.
-function buildCharts(sample) {
-  // Use d3.json to load and retrieve the samples.json file 
-  d3.json("samples.json").then((data) => {
-    
-
-    // Deliverable 1 Step 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot(); 
 
     // 1. Create the trace for the bubble chart.
     var bubbleData = [{
       x: otuIds,
-      y: samplesValues,
+      y: sampleValues,
       text: otuLabels,
       mode: "markers",
+      colorscale: "RdBu",
       marker: {
-        size: sampleValues,
         color: otuIds,
-        colorscale: "RdBu"
+        size: sampleValues,
+        colorscale: 'YlOrRd'
+      }
       }  
-    }];
+    ];
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
@@ -136,21 +125,19 @@ function buildCharts(sample) {
       xaxis: {title: "OTU ID"},
       yaxis: {title: "Sample Value"},
       titlefont: {"size": 25},
-      hovermode: "Closest",
+      hovermode: "closest",
       height: 500
     };
 
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
-  });
-}
 
 // Deliverable 3 - Gauge Chart
 // Create the buildChart function.
-function buildCharts(sample) {
+////function buildCharts(sample) {
   // Use d3.json to load the samples.json file 
-  d3.json("samples.json").then((data) => {
-    console.log(data);
+  ////d3.json("samples.json").then((data) => {
+    ////console.log(data);
 
     // Create a variable that holds the samples array. 
 

@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Belly Button Biodiversity</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
 </head>
 <body>
     <div id="plot"></div>
-    <!--<script src="data.js"></script>-->
-    <!--<script src="plots.js"></script>-->
-    <script src="charts.js"></script>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 jumbotron text-center">
-            <h1>Belly Button Biodiversity Dashboard</h1>
+            <h1 style="background-color:DodgerBlue;">Belly Button Biodiversity Dashboard</h1>
             <p>Use the interactive charts below to explore the dataset</p>
+            <img src="https://post.healthline.com/wp-content/uploads/2020/09/766x415_Why_Is_My_Belly_Button_Bleeding.jpg" 
+            alt="Bleeding Bellybutton: Causes, Treatment, and More" jsname="HiaYvf" jsaction="load:XAeZkd;" class="n3VNCb" data-noaft="1" style="width: 450px; height: 243.799px; margin: 116.151px 0px;">
           </div>
         </div>
         
@@ -37,6 +36,8 @@
           
           <div class="col-md-5">
             <div id="bar"></div>
+            <script src="samples.json"></script>
+            <script src="bar"></script>
           </div>
           <div class="col-md-5">
             <div id="gauge"></div>
@@ -49,5 +50,10 @@
         </div>
       </div>
 
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+      <!--<script src="data.js"></script>-->
+      <!--<script src="plots.js"></script>-->
+      <script src="charts.js"></script>
 </body>
 </html>
